@@ -16,7 +16,7 @@ export class JaboneraComponent {
   public readonly imagenOf: string;
 
   constructor() {
-    this.nombre = "Deliplus";
+    this.nombre = "MiJabonera";
     this.nivelMaximo = 500;
     this.nivelActual = 0;
     this.cantidadDispensada = 10;
