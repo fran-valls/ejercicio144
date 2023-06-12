@@ -1,0 +1,54 @@
+<div>
+  <div id="botonera" class="btn-group-vertical float-start">
+    <button 
+      class="btn" 
+      [class]="
+          {
+            'btn-outline-success' : encendido,
+            'btn-outline-danger' : !encendido          
+          }" 
+      (click)="power()">
+      <i class="bi bi-power"></i>
+    </button>
+    <button class="btn btn-outline-primary" (click)="cargarBateria()">
+      Cargar baterías
+    </button>
+    <button class="btn btn-outline-primary" (click)="rellenarJabon()">
+      Rellenar jabón
+    </button>
+  </div>
+
+  <div class="float-start">
+
+      <img 
+        (click)="dispensar()"
+        class="jabonera img-fluid" 
+        alt="Dispensador encendido" 
+        [src]="encendido ? imagenOn: imagenOf" />
+
+    <div id="datos">
+      <p class="h4 text-center">{{nombre}}</p>
+
+      <label for="bateria" class="form-label">
+        <i *ngIf="bateria <= 15" class="bi bi-battery text-danger"></i>
+        <i *ngIf="bateria > 15 && bateria <= 50" class="bi bi-battery-half"></i>
+        <i *ngIf="bateria > 50" class="bi bi-battery-full text-success"></i>
+        <span> cantidad% {{bateria | number}} </span>
+      </label>
+      <div class="progress" id="bateria">
+        <div class="progress-bar bg-success" [style.width.%]="bateria">
+        </div>
+      </div>
+      <hr />
+      <label for="deposito" class="form-label">
+        <i class="bi bi-moisture"></i>
+        <span> {{nivelActual}} ml / {{nivelMaximo}} ml ({{obtenerPorcentajeJabon()}}%)</span>
+      </label>
+      <div class="progress" id="deposito">
+        <div class="progress-bar bg-info" [style.width.%]="obtenerPorcentajeJabon()">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
